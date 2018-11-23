@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body
+{
+	background-color:#725752;
+}
+
+form
+{
+	width:50%;
+	background-color:#878E88;
+	left: 50%;
+	position: absolute;
+	-webkit-transform: translate3d(-50%, -0%, 0);
+	-moz-transform: translate3d(-50%, -0%, 0);
+	transform: translate3d(-50%, -0%, 0);
+}
+
+.line {
+font-size:30px;
+background-color:#F4FFF7;
+border-radius: 10px;
+text-align: center;
+border: 1px #ccc;
+margin: 2%;
+}
+
+.icon{
+display: inline-block;
+width:6%;
+
+vertical-align: middle;}
+
+
+img
+{
+max-width:100%;
+max-height:100%;
+}
+
+#myform {
+    text-align: center;
+    padding: 5px;
+    border: 1px #ccc;
+    margin: 2%;
+}
+
+.ammount {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+}
+
+input {   
+ border-radius: 8px;
+	line-height:0px;
+background-color: #D4DFC7;
+    color: white;
+    padding: 25px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 2px 2px;
+    cursor: pointer;	
+    color: black; 
+    border: 2px solid #96C0B7;	
+	}
+	
+.beverage{
+display: inline-block;
+width: 50%;
+
+}
+	
+input:focus {outline:0;}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+jQuery(document).ready(function(){
+    $('.plus').click(function(e){
+        e.preventDefault();
+        fieldName = $(this).attr('field');
+        var currentVal = parseInt($('output[name='+fieldName+']').val());
+		var currentTotal = parseFloat($('output[name=result]').val());
+		var currentPrice = parseFloat($('output[name='+fieldName+']').attr("price"))
+        if (!isNaN(currentVal)) {
+            $('output[name='+fieldName+']').val(currentVal + 1);
+			$('output[name=result]').val((currentTotal + currentPrice).toFixed(3));
+        } else {
+            $('output[name='+fieldName+']').val(0);
+        }
+		
+		
+    });
+    $(".minus").click(function(e) {
+        e.preventDefault();
+        fieldName = $(this).attr('field');
+        var currentVal = parseInt($('output[name='+fieldName+']').val());
+		var currentTotal = parseFloat($('output[name=result]').val());
+		var currentPrice = parseFloat($('output[name='+fieldName+']').attr("price"))
+        if (!isNaN(currentVal) && currentVal > 0) {
+            $('output[name='+fieldName+']').val(currentVal - 1);
+			$('output[name=result]').val((currentTotal - currentPrice).toFixed(3));
+        } else {
+            $('output[name='+fieldName+']').val(0);			
+        }
+    });
+	
+	
+});
+
+
+
+</script>
+
+</head>
+
+<body>
+<form id='myform' method='POST' action='#'>
+	<div class='line'>
+	<div class='icon'>
+	<img src="beer.png" />
+	</div>
+	<div class='beverage'>
+	Beer 4.0% 568ml (Pint)
+	</div>
+	
+    <input type='button' value='-' class='minus' field='quantity' />
+    <output type='text' name='quantity' class='ammount' price='2.272' >0</output>
+    <input type='button' value='+' class='plus' field='quantity' />
+	</div>
+	<div class='line'>
+		<div class='icon'>
+	<img src="beer.png" />
+	</div>
+	<div class='beverage'>
+	Beer 5.0% 330ml (small bottle)
+	</div>
+	<input type='button' value='-' class='minus' field='quantity2' />
+    <output type='text' name='quantity2' class='ammount' price='1.65'>0</output>
+    <input type='button' value='+' class='plus' field='quantity2' />
+	</div>
+	<div class='line'>
+		<div class='icon'>
+	<img src="beer.png" />
+	</div>
+	<div class='beverage'>
+	Cider 4.5% 568ml (Pint)
+	</div>
+	<input type='button' value='-' class='minus' field='quantity3' />
+    <output type='text' name='quantity3' class='ammount' price='2.556' >0</output>
+    <input type='button' value='+' class='plus' field='quantity3' />
+	</div>
+	<div class='line'>
+		<div class='icon'>
+	<img src="beer.png" />
+	</div>
+	<div class='beverage'>
+	Wine 13.0% 175ml 
+	</div>
+	<input type='button' value='-' class='minus' field='quantity4' />
+    <output type='text' name='quantity4' class='ammount' price='2.275' >0</output>
+    <input type='button' value='+' class='plus' field='quantity4' />
+	</div>
+	<div class='line'>
+		<div class='icon'>
+	<img src="beer.png" />
+	</div>
+	<div class='beverage'>
+	Champagne 12.0% 125ml
+	</div>
+	<input type='button' value='-' class='minus' field='quantity5' />
+    <output type='text' name='quantity5' class='ammount' price='1.5' >0</output>
+    <input type='button' value='+' class='plus' field='quantity5' />
+	</div>
+	<div class='line'>
+		<div class='icon'>
+	<img src="beer.png" />
+	</div>
+	<div class='beverage'>
+	Spirits 40% 25ml (Single)
+	</div>
+	<input type='button' value='-' class='minus' field='quantity6' />
+    <output type='text' name='quantity6' class='ammount' price='1' >0</output>
+    <input type='button' value='+' class='plus' field='quantity6' />
+	</div>
+	<div class='line'>
+		<div class='icon'>
+	<img src="beer.png" />
+	</div>
+	<div class='beverage'>
+	Alcopops 4.0% 275ml 
+	</div>
+	<input type='button' value='-' class='minus' field='quantity7' />
+    <output type='text' name='quantity7'  class='ammount' price='1.1' >0</output>
+    <input type='button' value='+' class='plus' field='quantity7' />
+	</div>
+	<div class='line'>
+	<output name="result">0</output>
+	</div>
+</form>
+</body>
+
+</html>
